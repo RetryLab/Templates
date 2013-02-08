@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Notification - Maniadmin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+         <!-- bootstrap css -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+         <!-- base css -->
+        <link class="links-css" href="css/base.css" rel="stylesheet">
+         <!-- noty page css -->
+        <link href="css/noty.css" rel="stylesheet">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+
+        </style>
+
+
+            <!--  noty themes   -->
+                <link rel="stylesheet" type="text/css" href="css/noty-css/jquery.noty.css"/>
+                <link rel="stylesheet" type="text/css" href="css/noty-css/noty_theme_default.css"/>
+                <link rel="stylesheet" type="text/css" href="css/noty-css/noty_theme_twitter.css"/>
+                <link rel="stylesheet" type="text/css" href="css/noty-css/noty_theme_mitgux.css"/>
+                <link rel="stylesheet" type="text/css" href="css/noty-css/noty_theme_facebook.css"/>
+                <link rel="stylesheet" type="text/css" href="css/noty-css/noty_theme_growl.css"/>
+ <!-- responsive css -->
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+ <!-- media query css -->
+        <link href="css/media-fluid.css" rel="stylesheet">
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="index.html"><img src="img/logo-small.png" alt="logo" /></a>
+                    <ul class="nav pull-left bar-root">
+                        <li class="divider-vertical"></li>
+                        <li><a href="chat.html" ><i class="icon-comment icon-white"></i><span class="label label-important">6</span></a> </li>
+                        <li class="dropdown"><a href="noty.html#" data-toggle="dropdown" > <i class="icon-envelope icon-white"></i><span class="label label-important">5 new</span></a> 
+                            <ul class="dropdown-menu">
+                                <li><a href="inbox.html"><img src="img/small/thumb1.png" alt="" /> Subject : Project <p class='help-block'><small>From: ab.alhyane@gmail.com</small></p><span class="label">23/09/2012</span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="inbox.html"><img src="img/small/thumb2.png" alt="" /> Subject : Film <p class='help-block'><small>From: ab.alhyane@gmail.com</small></p><span class="label">21/04/2012</span> </a></li>
+                                <li class="divider"></li>
+                                <li><a href="inbox.html"><img src="img/small/thumb3.png" alt="" /> Subject : Meeting <p class='help-block'><small>From: ab.alhyane@gmail.com</small></p><span class="label">20/02/2012</span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="inbox.html"><img src="img/small/thumb4.png" alt="" /> Subject : Tasks <p class='help-block'><small>From: y.kostali@gmail.com</small></p><span class="label">19/01/2012</span></a></li>
+                                <li class="divider"></li>
+                                <li class="active"><a href="inbox.html"> Show All </a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="noty.html#" data-toggle="dropdown" > <i class="icon-refresh icon-white"></i><span class="label label-info">3 Updates</span></a> 
+                            <ul class="dropdown-menu">
+                                <li><a href="noty.html#"> Theme </a></li>
+                                <li><a href="noty.html#"> Components</a></li>
+                                <li><a href="noty.html#"> Plugins</a></li>
+                                <li class="divider"></li>
+                                <li class="active"><a href="noty.html#"> Show All </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="group-menu nav-collapse"> 
+                        <ul class="nav pull-right">
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" href="noty.html#">Salutations, Ab Alhyane <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+
+                                        <div class="modal-header">
+
+                                            <h3>Kostali Youssef - Admin</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="span1"><img src="img/avatar/photo.png" alt="avatar" /></div>
+                                                <div class="span3 pull-right">
+                                                    <h5>mail@gmail.com</h5>
+                                                    <a href="noty.html#" class="link-modal" >Account</a>  <a href="noty.html#" class="link-modal" >Settings-Privacy</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="noty.html#" class="btn btn-info pull-left">Show my profile</a>
+                                            <a class="btn btn-info" href="login.html">Deconnexion</a>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form action="noty.html#" class="navbar-search pull-right">
+                            <input type="text" placeholder="Search" class="search-query span2" >
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div id="menu-left" class="span3">
+
+                    <div  class="sidebar-nav">
+                        <ul class="nav nav-list">
+                            <li><a href="index.html"><i class="icon-th-large"></i><span> Dashboard</span></a></li>
+                            <li><a href="widget.html"><i class="icon-th"></i><span> Widgets</span></a></li>
+                            <li><a href="tables.html"><i class="icon-list-alt"></i><span> Tables</span></a></li>
+                            <li><a href="elements.html"><i class="icon-tasks"></i><span> Elements</span></a></li>
+                            <li><a href="media.html"><i class="icon-picture"></i><span> Media</span></a></li>
+                            <li><a href="forms.html"><i class="icon-align-center"></i><span> Forms</span></a></li>
+                            <li><a href="grid.html"><i class="icon-indent-left"></i><span> Grid</span></a></li>
+                            <li><a href="buttons.html"><i class="icon-gift"></i><span> Buttons & Icons</span></a></li>
+                            <li><a href="noty.html" class="current"><i class="icon-comment icon-white"></i><span> Notification</span></a></li>
+                            <li><a href="callendar.html"><i class="icon-calendar"></i><span> Callendar </span></a></li>
+                            <li><a href="bootstrap-ui.html"><i class="icon-ok"></i><span> Bootstrap ui </span></a></li>
+                            <li><a href="chat.html"><i class="icon-bullhorn"></i><span> Chat </span></a></li>
+                            <li><a href="inbox.html"><i class="icon-envelope"></i><span> Inbox </span></a></li>
+                            <li><a href="charts.html" class="last"><i class="icon-warning-sign"></i><span>  Graphs & Charts</span></a></li>
+                            <li class="accordion-menu">
+                                <a href="noty.html#collapseOne" data-toggle="collapse" class="accordion-toggle"><i class="icon-warning-sign"></i><span> Error Pages  <i class="icon-chevron-down pull-right"></i></span></a>
+                                <div class="accordion-body collapse dropdown" id="collapseOne">
+                                    <div class="accordion-inner">
+                                        <ul class="nav nav-list">
+                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="403.html">403</a></li>
+                                            <li><a href="500.html">500</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class='togglemenuleft'><a class='toggle-menu'><i class="icon-circle-arrow-left icon-white"></i></a></div>
+                    </div><!--/.well -->
+                </div><!--/span-->
+
+
+                <div id="content" class="span9 section-body">
+
+                    <div id="section-body" class="tabbable"> <!-- Only required for left/right tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="noty.html#tab1" data-toggle="tab">Notification</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
+
+                                <div class="row-fluid">
+                                    <!--Tabs2-->
+                                    <div class="span12 noty">
+
+
+                                    <div class="theme-switcher">
+                
+                                        <label for="theme_switcher">Theme Switcher</label>
+                                        <select id="theme_switcher" name="theme_switcher">
+                                            <option value="noty_theme_default" selected="selected">Default</option>
+                                            <option value="noty_theme_mitgux">Mitgux</option>
+                                            <option value="noty_theme_twitter">Twitter Bootstrap</option>
+                                            <option value="noty_theme_facebook">Facebook</option>
+                                        </select>
+            
+                                    </div> 
+                                     
+
+                                        <table class="table table-bordered table-striped">
+                                          <thead>
+                                              <tr>
+                                                <th>Top</th>
+                                                <th>Center</th>
+                                                <th>Bottom</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td>--</td>
+                                                <td class="muted"><a href="noty.html#" class="alert ex3 btn">Alert</a></td>
+                                                <td><a href="noty.html#" class="alert ex2 btn">Alert</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="error ex1 btn">Error</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="error ex3 btn">Error</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="error ex2 btn">Error</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="success ex1 btn">Success</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="success ex3 btn">Success</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="success ex2 btn">Success</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="information ex1 btn">Information</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="information ex3 btn">Information</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="information ex2 btn">Information</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="confirm ex1 btn">Confirm</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="confirm ex3 btn">Confirm</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="confirm ex2 btn">Confirm</a></td>
+                                              </tr>
+                                            </tbody>
+ 
+                                              <tr>
+                                                <th>Top Left</th>
+                                                <th>Top Center</th>
+                                                <th>Top Right</th>
+                                              </tr>
+                                      
+                                            <tbody>
+                                              <tr>
+                                                <td><a href="noty.html#" class="alert ex4 btn">Alert</a></td>
+                                                <td class="muted"><a href="noty.html#" class="alert ex6 btn">Alert</a></td>
+                                                <td><a href="noty.html#" class="alert ex5 btn">Alert</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="error ex4 btn">Error</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="error ex6 btn">Error</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="error ex5 btn">Error</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="success ex4 btn">Success</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="success ex6 btn">Success</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="success ex5 btn">Success</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="information ex4 btn">Information</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="information ex6 btn">Information</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="information ex5 btn">Information</a></td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="confirm ex4 btn">Confirm</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="confirm ex6 btn">Confirm</a>
+                                                </td>
+                                                <td><a href="noty.html#" class="confirm ex5 btn">Confirm</a></td>
+                                              </tr>
+                                            </tbody>
+
+                                              
+                                              <tr>
+                                                <th>Bottom Left</th>
+                                                <th>Bottom Right</th>
+                                                <th>--</th>
+                                              </tr>
+                                            
+                                            <tbody>
+                                              <tr>
+                                                <td><a href="noty.html#" class="alert ex7 btn">Alert</a></td>
+                                                <td class="muted"><a href="noty.html#" class="alert ex8 btn">Alert</a></td>
+                                                <td>--</td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="error ex7 btn">Error</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="error ex8 btn">Error</a>
+                                                </td>
+                                                <td>--</td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="success ex7 btn">Success</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="success ex8 btn">Success</a>
+                                                </td>
+                                                <td>--</td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="information ex7 btn">Information</a></td>
+                                                <td>
+                                                  <a href="noty.html#" class="information ex8 btn">Information</a>
+                                                </td>
+                                                <td>--</td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="noty.html#" class="confirm ex7 btn">Confirm</a></td>
+                                                <td>
+                                                 <a href="noty.html#" class="confirm ex8 btn">Confirm</a>
+                                                </td>
+                                                <td>--</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <p><strong>&copy; Maniadmin 2012</strong></p>
+            </footer>
+           <div class="theme">
+                <h4>Style</h4>
+                    <a class="darkblue style" href="http://wbpreview.com/previews/WB0881879/darkblue.css"></a>
+                    <a class="darkred style" href="http://wbpreview.com/previews/WB0881879/darkred.css"></a>
+                    <a class="default style" href="http://wbpreview.com/previews/WB0881879/base.css"></a>
+                     <a class="switcher" href="noty.html#"><i class="icon-circle-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!--  noty  2 scripts  -->
+        <script src="js/noty-script.js"></script>
+        <script src="js/jquery.noty.js"></script>
+
+    
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.togglemenuleft').click(function(){
+                    $('#menu-left').toggleClass('span1');
+                    $('#menu-left').toggleClass('icons-only');
+                    $('#menu-left').toggleClass('span3');
+
+                    $('#content').toggleClass('span9');
+                    $('#content').toggleClass('span11');
+                    $(this).find('i').toggleClass('icon-circle-arrow-right');
+                    $(this).find('i').toggleClass('icon-circle-arrow-left');
+                    $('#menu-left').find('span').toggle();
+                    $('#menu-left').find('.dropdown').toggle();
+                });
+
+                $('#menu-left a').click(function(){
+                    $('#menu-left').find('a').removeClass('active');
+                    $(this).addClass('active');
+                });
+                 
+                $('a.style').click(function(){
+                    var style = $(this).attr('href');
+                    $('.links-css').attr('href','css/' + style);
+                    return false;
+                });
+
+
+                // NOTY 
+// switch style 
+
+                $(".switcher").click(function(){
+                    if($(this).find('i').hasClass('icon-circle-arrow-right'))
+                    $('.theme').animate({left:'0px'},500);
+                    else
+                    $('.theme').animate({left:'-89'},500);
+
+                    $(this).find('i').toggleClass('icon-circle-arrow-right');
+                    $(this).find('i').toggleClass('icon-circle-arrow-left');
+                });
+
+               
+            });
+        </script>
+    </body>
+</html>

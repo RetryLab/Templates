@@ -1,0 +1,19 @@
+.tab-content{
+	min-height:800px;
+}
+
+.big{
+	font-size:22px;
+	list-style-type:none;
+}
+
+.big li {
+	line-height:28px;
+}
+
+.big li strong{
+	width:50px;
+	display:inline-block;
+	text-align:right;
+	padding-right:5px;
+}

@@ -1,0 +1,948 @@
+
+	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Muffin Admin Cake</title>
+    
+    <!-- Bootstrap -->
+    <link href="application/add/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="application/add/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <link href="application/style/style.css" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.print.css' media='print' />
+	
+  </head>
+  
+  <body>
+
+	<!-- bootstrap -->
+    <script src="application/add/jquery-1.8.3.min.js"></script>
+    <script src="application/add/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- charts -->
+    <script type="text/javascript" src="application/add/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="application/add/flot/jquery.flot.pie.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.stack.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.resize.js"></script>
+	
+	<!-- calendar -->
+	<script type='text/javascript' src='application/add/fullcalendar/fullcalendar.min.js'></script>		
+		
+	
+	<!-- muffin -->
+	<script type="text/javascript" src="application/js/lib_tables.js"></script>	
+	<script type="text/javascript" src="application/js/lib_chart.js"></script>
+	<script type="text/javascript" src="application/js/lib_boxes.js"></script>
+	<script type="text/javascript" src="application/js/lib_notifications.js"></script>
+	<script type="text/javascript" src="application/js/lib_calendar.js"></script>	
+	<script type="text/javascript" src="application/js/lib_live.js"></script>
+	<script type="text/javascript" src="application/js/lib_main.js"></script>
+
+
+	
+	
+	<script type="text/javascript">
+	
+	function thispage(){
+		
+		//alert("ready");	
+
+		//icon +/-
+		expandableBoxes(['1','4','5','6','7']);	//array with boxes ids
+		expandableSections(['1']);	//array with boxes ids
+		
+		
+		//menu
+		$('.submenumin_products').collapse('hide');		
+		$('#submenu_products').collapse('hide');		
+		$('#lm5').addClass('leftmenu-activeopt');	//activate left menu option
+		$('#lm5-3').addClass('leftmenu-sub-activeopt');
+	
+	}
+
+	</script>
+
+	
+     
+	<!-- Modal -->
+	<div id="calModal" class="modal hide shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="calModalLabel">Remove?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button id="calModal_ok" class="btn btn-inverse" data-dismiss="modal">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Logout?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-inverse">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Main -->
+	
+	
+	<div id="leftside" class="hidden-phone hidden-tablet">
+		
+		<div style="background-image:url('application/design/mbg.png')">
+		<div id="leftside-logo">
+		
+			<img src="application/data/logo.png" alt="Logo">
+			
+		</div>
+		<div>
+		
+			
+
+	<!-- left menu -->
+	<ul class="nav leftmenu">
+  		<li id="lm1" class="leftmenu-opt"><a href="index.html">Dashboard<span id="badge_lm1" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm2" class="leftmenu-opt"><a href="orders.html">Orders<span id="badge_lm2" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm3" class="leftmenu-opt"><a href="users.html">Users<span id="badge_lm3" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm4" class="leftmenu-opt"><a href="products.html">Products<span id="badge_lm4" class="leftmenu-badge hide"></span></a>
+  		
+  		<div id="submenu_products" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm4-1"><a href="ptypes.html">Product Types <span id="badge_lm4_1" class="leftmenu-sub-badge hide"></span></a></li>
+   		</ul>
+   		</div>
+  		
+  		</li>
+  		<li id="lm5" class="leftmenu-opt"><a href="content.html">//Content<span id="badge_lm5" class="leftmenu-badge hide"></span></a>
+  		 
+  		<div id="submenu_content" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm5-4"><a href="charts.html">Charts</a></li>
+  				<li id="lm5-2"><a href="tables.html">Tables</a></li>
+  				<li id="lm5-3"><a href="forms.html">Forms</a></li>		
+  				<li id="lm5-1"><a href="typography.html">Typography</a></li>
+  				<li id="lm5-5"><a href="interface.html">Ux</a></li>
+  				<li id="lm5-6"><a href="boxes.html">Boxes</a></li>
+  				<li id="lm5-7"><a href="grid.html">Grid</a></li>
+   		</ul>
+   		</div>
+   		
+   		</li>
+  		<li id="lm6" class="leftmenu-opt"><a href="login.html">Login<span id="badge_lm6" class="leftmenu-badge hide"></span></a></li>
+	</ul>
+	<!-- end: left menu -->
+
+
+     
+		</div>
+		</div>
+	
+	</div>
+	
+	<div id="wrap">
+	<div id="rightside">
+	
+		<div id="rightside-space">
+		
+		<div id="rightside-menu" class="top-rheight">
+		
+			<!-- menu <980 -->
+     		<div id="rightside-menu-left" class="visible-phone visible-tablet top-lplace">
+     	
+     		
+		<!-- left menu min -->
+		<div id="dropdown_leftmenu2" class="dropdown">
+  			
+  			<a id="leftmenu2" class="dropdown-toggle" data-toggle="dropdown" href="forms.html#">
+  			<img class="hide-480" src="application/data/logo.png" alt="Logo"><span class="icon-align-justify icon-white tra-0"></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu topmenu-left">  			
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-tasks icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="index.html">Dashboard</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="orders.html">Orders</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="users.html">Users</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="products.html">Products</a></div>
+  				</li>	
+  				
+  				<li class="submenumin_products">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="ptypes.html">Product Types</a></div>
+  				</li>
+  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="content.html">//Content</a></div>
+				</li>
+				
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="charts.html">Charts</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="tables.html">Tables</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="forms.html">Forms</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="typography.html">Typography</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="interface.html">Ux</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="boxes.html">Boxes</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="grid.html">Grid</a></div>
+  				</li>
+		  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-lock icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="login.html">Login</a></div>
+  				</li>
+  			</ul>
+  			</div>
+  			
+		</div>
+		<!-- end: left menu min -->
+
+     	
+     		</div>
+     		<!-- end - menu <980 -->
+		
+			<div id="rightside-menu-right">
+			
+						
+			<div class="top-btn top-bwidth">
+				
+			<!-- toolbox -->
+			<div id="dropdown_toolbox" class="dropdown">
+  			
+  			<a id="toolbox" class="dropdown-toggle" data-toggle="dropdown" href="forms.html#">
+  			<span class="white"><i class="icon-wrench icon-white tra"></i></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu">
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-hdd icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="filemanager.html">File Manager</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-cog icon-white tra"></i></div>
+  					<div class="topmenu-opt"><span class="disabled">Settings</span></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-question-sign icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="info.html">Info</a></div>
+  				</li>	
+  			</ul> 				
+  			</div>
+  			
+			</div>
+			<!-- end: toolbox -->
+
+			</div>	
+			<div class="top-btn top-bwidth">
+				
+			<a href="forms.html#myModal" role="button" class="white" data-toggle="modal"><i class="icon-off icon-white tra-0"></i></a>
+
+			</div>	
+			<div class="top-btn top-bwidth-not">
+				
+			<!-- notifications -->
+			<div id="dropdown_notification" class="dropdown">
+  			
+  			<a id="notification" class="dropdown-toggle" data-toggle="dropdown" href="forms.html#">
+  			<span class="white topmenu-mainopt visible-616">Notifications <span id="badge_notif" class="topmenu-badge hide"></span></span><span class="white topmenu-mainopt hide-616"><span id="badge_notif2" class="topmenu-badge hide"></span></span>
+  			</a>
+
+  			<div class="dropdown-menu topmenu-menu notif-menu">  			
+  			<ul id="notification_content_last" class="nav topmenu" style="display:none">
+  			</ul>
+  			<ul id="notification_content" class="nav topmenu">
+  			</ul>  			
+  			</div>
+  			
+			</div>
+			<!-- end: notifications -->
+
+			</div>	
+			<div class="top-btn-sea">
+				
+			<!-- search -->
+			<form class="form-search form-nomargin">
+				
+				<div class="input-append">
+				<input class="search-query minih" style="width:50px" type="text">
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+				
+			</form>
+			<!-- end: search -->
+
+			</div>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div id="rightside-content">
+			
+			<!-- page header -->
+	 		
+	<div class="pagestatus">
+     	
+     	<span class="pagestatus-right">
+			<!-- right -->
+			<a href="content.html" class="btn btn-small"><i class="icon-align-justify"></i></a> <a href="tables.html" class="btn btn-small">Step 6: Tables</a>
+			<!-- end: right -->
+		</span>
+		
+     	<ul class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a> / <a href="content.html">Content</a> /
+			</li>
+		</ul><br>
+		Forms
+     
+     </div>
+
+     		<!-- end: page header --> 		
+		
+     		<div class="container-fluid">
+	 		<!-- main content -->
+	 		
+
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span6">
+	 <div class="box-r">
+	 	
+	 	<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Form inside a box
+			</span>
+			<span class="box-r-top-right">
+				<a href="forms.html#self" data-toggle="collapse" data-target="#box_4_content"><i id="box_4_expand" class="icon-minus-sign tra"></i></a>
+			</span>
+		</div>
+		
+		<div id="box_4_content" class="box-r-content collapse in">
+			
+	
+			<form class="margin-0">
+	 			<div class="form-box">
+	 			
+  					<div class="control-group">
+    					<label class="control-label" for="inputEmail">Email</label>
+    					<div class="controls"><input class="mini span12" type="text" id="inputEmail"></div>
+  					</div>
+  					
+  					<div class="control-group">
+    					<label class="control-label" for="inputPassword">Password</label>
+    					<div class="controls"><input class="mini span12" type="text" id="inputPassword"></div>
+  					</div>
+  				
+  					<div class="controls">
+      					<label class="checkbox">
+        				<input type="checkbox"> Remember me</label>
+    				</div>
+
+	 			</div>
+	 			<div class="ibox-bottom margin-0 padding-10">
+	 			
+	 				<div class="control-group">
+    						<a href="index.html" class="btn btn-small">Sign in</a>
+  					</div>
+  					
+	 			</div>
+	 		</form>
+		
+
+	 	</div>
+		
+	 </div>
+	 </div>
+	 
+	 <div class="span6">
+	 <div class="box-r">
+	 	
+	 	<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Form inside a grid
+			</span>
+			<span class="box-r-top-right">
+				<a href="forms.html#self" data-toggle="collapse" data-target="#box_5_content"><i id="box_5_expand" class="icon-minus-sign tra"></i></a>
+			</span>
+		</div>
+		
+		<div id="box_5_content" class="box-r-content collapse in">
+			
+			<div class="container-fluid container-box margin-top">
+			<div class="row-fluid">
+		
+	 		<div class="span12">
+	 		
+			
+			<form class="margin-0">
+	 			<div class="form-box">
+	 			
+  					<div class="control-group">
+    					<label class="control-label" for="inputEmail44">Email</label>
+    					<div class="controls"><input class="mini span12" type="text" id="inputEmail44"></div>
+  					</div>
+  					
+  					<div class="control-group">
+    					<label class="control-label" for="inputPassword44">Password</label>
+    					<div class="controls"><input class="mini span12" type="text" id="inputPassword44"></div>
+  					</div>
+  				
+  					<div class="controls">
+      					<label class="checkbox">
+        				<input type="checkbox"> Remember me</label>
+    				</div>
+
+	 			</div>
+	 			<div class="ibox-bottom margin-0 padding-10">
+	 			
+	 				<div class="control-group">
+    						<a href="index.html" class="btn btn-small">Sign in</a>
+  					</div>
+  					
+	 			</div>
+	 		</form>
+
+				 		
+	 		</div>
+	 		
+	 		</div>
+	 		</div>
+		
+	 	</div>
+		
+	 </div>
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 <div class="box-r">
+	 	
+	 	<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Form inside a grid
+			</span>
+			<span class="box-r-top-right">
+				<a href="forms.html#self" data-toggle="collapse" data-target="#box_6_content"><i id="box_6_expand" class="icon-minus-sign tra"></i></a>
+			</span>
+		</div>
+		
+		<div id="box_6_content" class="box-r-content collapse in">
+			
+			<div class="container-fluid container-box margin-top">
+			<div class="row-fluid">
+			
+			<div class="span8">
+			<form class="margin-0">
+				<div class="control-group">
+    				<label class="control-label" for="inputEmail2">Label 1</label>
+    				<div class="controls"><input class="mini span12" type="text" id="inputEmail2"></div>
+    				<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+  				</div>
+  				<div class="control-group">
+    				<label class="control-label" for="inputEmail3">Label 2</label>
+    				<div class="controls"><input class="mini span12" type="text" id="inputEmail3"></div>
+    				<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+  				</div>
+    			<button type="submit" class="btn btn-small margin-top">Sign in</button>
+			</form>
+	 		</div>
+	 		
+			<div class="span4">
+			<form class="form-box margin-0">			
+    			<div class="control-group"><div class="controls"><input class="span12" type="text" id="inputEmail4" placeholder="Label 1"></div></div>
+  				<div class="control-group"><div class="controls"><input class="span12" type="text" id="inputEmail5" placeholder="Label 2"></div></div>
+    			<button type="submit" class="btn btn-small">Sign in</button>
+			</form>
+			<hr>
+			Inline form - 
+	 			<form class="form-nomargin"> 		
+	 				<textarea rows="2" class="r6" placeholder=""></textarea>	 		
+	 			</form>.
+	 		</div>
+	 		
+	 		</div>
+	 		</div>
+
+	 	</div>
+		
+	 </div>
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 
+	 
+	 <div class="page-header"><a href="forms.html#self" id="section_1">Inputs <i id="section_1_expand" class="icon-minus-sign tra"></i></a></div>
+	 
+	 
+	 
+	 <div id="section_1_content">
+	 
+	 
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 
+	 <div class="box-r">
+	 
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Inputs
+			</span>
+			<span class="box-r-top-right">
+				<a href="forms.html#self" data-toggle="collapse" data-target="#box_1_content"><i id="box_1_expand" class="icon-minus-sign tra"></i></a>
+			</span>
+		</div>
+		
+		<div id="box_1_content" class="box-r-content collapsed in">
+			
+		<div class="container-fluid container-box margin-top">
+		<!-- row -->
+	 	<div class="row-fluid">
+	 		
+	 		<div class="span6">
+	 		
+	 			<form class="">
+	 			<fieldset>
+	 			
+	 			<div class="control-group">
+  				<div class="controls">
+				<input type="text" id="input1c" class="search-query minih r2">
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<input type="text" id="input1d" class="minih r2">
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<textarea rows="3" class="minih r2" placeholder=""></textarea>
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend">
+				<button type="submit" class="btn btn-mini">+</button>
+				<input class="minih r2" type="text">	
+				</div>					
+    			<span class="help-block">Text</span>    			
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-append">		
+				<input class="minih r2" type="text">	
+				<button type="submit" class="btn btn-mini">+</button>			  			
+  				</div>
+  				<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend input-append">
+				<button type="submit" class="btn btn-mini">-</button>		
+				<input class="minih r2" type="text">	
+				<button type="submit" class="btn btn-mini">+</button>
+				</div>
+    			<span class="help-block">Text</span>
+				</div>
+				</div>
+				
+				</fieldset>
+				</form>
+				
+				
+				
+			</div>
+			
+			<div class="span6">
+	 			
+	 			<form class="form-search">
+	 			<fieldset>
+	 			
+	 			<div class="control-group">
+  				<div class="controls">
+				<div class="input-append">		
+				<input class="search-query minih" type="text">	
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+    			<span class="help-block">Search-query</span>
+				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend">				
+				<button type="submit" class="btn btn-mini">Search</button>
+				<input class="search-query minih" type="text">
+				</div>
+    			<span class="help-block">Search-query</span>
+				</div>
+				</div>
+				
+	 			</fieldset>
+				</form>
+				
+				
+				
+	 			<form>
+	 			<fieldset>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<select class="minih">
+  				<option>1</option>
+  				<option>2</option>
+  				<option>3</option>
+				</select>
+    			<span class="help-block">Select</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<select class="minih" multiple="multiple">
+  				<option>1</option>
+  				<option>2</option>
+  				<option>3</option>
+				</select>
+    			<span class="help-block">Select</span>
+  				</div>
+				</div>
+				
+	 			</fieldset>
+				</form>	 			
+	 			
+	 		</div>
+	 		
+	 	</div>
+	 	<!-- row end -->
+	 	
+		</div>
+			
+		</div>
+
+	 </div>
+	 
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 
+	 <div class="box-r">
+	 
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Standard Inputs
+			</span>
+			<span class="box-r-top-right">
+				<a href="forms.html#self" data-toggle="collapse" data-target="#box_7_content"><i id="box_7_expand" class="icon-plus-sign tra"></i></a>
+			</span>
+		</div>
+		
+		<div id="box_7_content" class="box-r-content collapse">
+			
+		<div class="container-fluid container-box margin-top">
+		<!-- row -->
+	 	<div class="row-fluid">
+	 		
+	 		<div class="span6">
+
+				<form class="">
+	 			<fieldset>
+	 			
+	 			<div class="control-group">
+  				<div class="controls">
+				<input type="text" id="input1a" class="search-query mini span12">
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>				
+				
+				<div class="control-group">
+  				<div class="controls">
+				<input type="text" id="input1b" class="mini span12">
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<textarea rows="3" class="mini span12" placeholder=""></textarea>
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend">
+				<button type="submit" class="btn">+</button>
+				<input class="mini span6" type="text">	
+				</div>					
+    			<span class="help-block">Text</span>    			
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-append">		
+				<input class="mini span6" type="text">	
+				<button type="submit" class="btn">+</button>			  			
+  				</div>
+  				<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend input-append">
+				<button type="submit" class="btn">-</button>		
+				<input class="mini span6" type="text">	
+				<button type="submit" class="btn">+</button>
+				</div>
+    			<span class="help-block">Text</span>
+				</div>
+				</div>
+				
+				</fieldset>
+				</form>
+				
+				<hr>
+				
+				<form class="form-search">
+	 			<fieldset>
+	 			
+	 			<div class="control-group">
+  				<div class="controls">
+				<div class="input-append">		
+				<input class="search-query" type="text">	
+				<button type="submit" class="btn">Search</button>
+				</div>
+    			<span class="help-block">Search-query</span>
+				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<div class="input-prepend">				
+				<button type="submit" class="btn">Search</button>
+				<input class="search-query" type="text">
+				</div>
+    			<span class="help-block">Search-query</span>
+				</div>
+				</div>
+				
+	 			</fieldset>
+				</form>
+			
+				<!--
+	 			<div class="control-group warning">
+  				<label class="control-label" for="inputWarning">Input with warning</label>
+  				<div class="controls">
+				<input type="text" id="inputWarning">
+    			<span class="help-block">Something may have gone wrong</span>
+  				</div>
+				</div>
+	 			-->
+
+			</div>
+			
+			<div class="span6">
+	 			
+	 			<form>
+	 			<fieldset>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<select class="span12">
+  				<option>1</option>
+  				<option>2</option>
+  				<option>3</option>
+				</select>
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+				
+				<div class="control-group">
+  				<div class="controls">
+				<select class="span12" multiple="multiple">
+  				<option>1</option>
+  				<option>2</option>
+  				<option>3</option>
+				</select>
+    			<span class="help-block">Text</span>
+  				</div>
+				</div>
+    			
+    			<hr>
+    			
+    			<label class="radio">
+  				<input type="radio" name="optionsRadios" id="optionsRadios1a" value="option1" checked>
+  				Radio 1
+				</label>
+				<label class="radio">
+  				<input type="radio" name="optionsRadios" id="optionsRadios2a" value="option2">
+  				Radio 2
+				</label>	
+				<span class="help-block">Radios</span><br>		
+				
+				<label class="radio inline">
+  				<input type="radio" name="optionsRadios" id="optionsRadios1b" value="option1" checked>
+  				Radio 1
+				</label>
+				<label class="radio inline">
+  				<input type="radio" name="optionsRadios" id="optionsRadios2b" value="option2">
+  				Radio 2
+				</label>
+				<span class="help-block">Radios (inline)</span>					
+				
+				<hr>
+				
+				<label class="checkbox">
+  				<input type="checkbox" value="">
+  				Option 1
+				</label>
+				<label class="checkbox">
+  				<input type="checkbox" value="">
+  				Option 2
+				</label>
+				<span class="help-block">Checkboxes</span><br>
+				
+				<label class="checkbox inline">
+  				<input type="checkbox" value="">
+  				Option 1
+				</label>
+				<label class="checkbox inline">
+  				<input type="checkbox" value="">
+  				Option 2
+				</label>
+				<span class="help-block">Checkboxes (inline)</span>
+				
+	 			</fieldset>
+				</form>	 			
+	 			
+	 		</div>
+	 		
+	 	</div>
+	 	<!-- row end -->
+	 	
+		</div>
+			
+		</div>
+
+	 </div>
+	 
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 
+	 
+	 </div>
+
+
+     		<!-- end: main content -->
+     		</div>
+     
+     		<div class="container-end"></div>
+		
+		</div>
+		
+		<div id="rightside-foot">
+			
+			
+	<div class="footmenu">
+	 Muffin Admin Cake v1.04 © <a href="http://thomasjohn.eu" target="_blank">Thomas John</a>, 2012 - <a href="mailto:mail@thomasjohn.eu">Mail</a> 
+	 
+	 <div class="pull-right margin-right">
+	 </div>
+
+	 </div>
+
+     
+     		<div class="container-end"></div>
+     		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+			
+  </body>
+</html>

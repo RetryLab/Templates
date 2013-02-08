@@ -1,0 +1,14 @@
+body {margin:0 30px;padding-bottom:200px;}
+.listing {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.listing li {
+	display:inline-block;
+	margin:0 10px 10px 0;
+	width:95px;
+}
+.listing.circle-listing li, .listing.square-listing li {
+	width:auto;
+}

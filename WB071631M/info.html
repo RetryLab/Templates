@@ -1,0 +1,603 @@
+
+	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Muffin Admin Cake</title>
+    
+    <!-- Bootstrap -->
+    <link href="application/add/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="application/add/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <link href="application/style/style.css" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.print.css' media='print' />
+	
+  </head>
+  
+  <body>
+
+	<!-- bootstrap -->
+    <script src="application/add/jquery-1.8.3.min.js"></script>
+    <script src="application/add/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- charts -->
+    <script type="text/javascript" src="application/add/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="application/add/flot/jquery.flot.pie.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.stack.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.resize.js"></script>
+	
+	<!-- calendar -->
+	<script type='text/javascript' src='application/add/fullcalendar/fullcalendar.min.js'></script>		
+		
+	
+	<!-- muffin -->
+	<script type="text/javascript" src="application/js/lib_tables.js"></script>	
+	<script type="text/javascript" src="application/js/lib_chart.js"></script>
+	<script type="text/javascript" src="application/js/lib_boxes.js"></script>
+	<script type="text/javascript" src="application/js/lib_notifications.js"></script>
+	<script type="text/javascript" src="application/js/lib_calendar.js"></script>	
+	<script type="text/javascript" src="application/js/lib_live.js"></script>
+	<script type="text/javascript" src="application/js/lib_main.js"></script>
+
+
+	
+	
+	<script type="text/javascript">
+	
+	function thispage(){
+		
+		//alert("ready");	
+
+		
+		//menu
+		$('.submenumin_products').collapse('hide');		
+		$('#submenu_products').collapse('hide');
+		$('#submenu_content').collapse('hide');
+		$('.submenumin_content').collapse('hide');
+		
+	}
+	</script>
+	
+
+	
+     
+	<!-- Modal -->
+	<div id="calModal" class="modal hide shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="calModalLabel">Remove?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button id="calModal_ok" class="btn btn-inverse" data-dismiss="modal">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Logout?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-inverse">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Main -->
+	
+	
+	<div id="leftside" class="hidden-phone hidden-tablet">
+		
+		<div style="background-image:url('application/design/mbg.png')">
+		<div id="leftside-logo">
+		
+			<img src="application/data/logo.png" alt="Logo">
+			
+		</div>
+		<div>
+		
+			
+
+	<!-- left menu -->
+	<ul class="nav leftmenu">
+  		<li id="lm1" class="leftmenu-opt"><a href="index.html">Dashboard<span id="badge_lm1" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm2" class="leftmenu-opt"><a href="orders.html">Orders<span id="badge_lm2" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm3" class="leftmenu-opt"><a href="users.html">Users<span id="badge_lm3" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm4" class="leftmenu-opt"><a href="products.html">Products<span id="badge_lm4" class="leftmenu-badge hide"></span></a>
+  		
+  		<div id="submenu_products" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm4-1"><a href="ptypes.html">Product Types <span id="badge_lm4_1" class="leftmenu-sub-badge hide"></span></a></li>
+   		</ul>
+   		</div>
+  		
+  		</li>
+  		<li id="lm5" class="leftmenu-opt"><a href="content.html">//Content<span id="badge_lm5" class="leftmenu-badge hide"></span></a>
+  		 
+  		<div id="submenu_content" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm5-4"><a href="charts.html">Charts</a></li>
+  				<li id="lm5-2"><a href="tables.html">Tables</a></li>
+  				<li id="lm5-3"><a href="forms.html">Forms</a></li>		
+  				<li id="lm5-1"><a href="typography.html">Typography</a></li>
+  				<li id="lm5-5"><a href="interface.html">Ux</a></li>
+  				<li id="lm5-6"><a href="boxes.html">Boxes</a></li>
+  				<li id="lm5-7"><a href="grid.html">Grid</a></li>
+   		</ul>
+   		</div>
+   		
+   		</li>
+  		<li id="lm6" class="leftmenu-opt"><a href="login.html">Login<span id="badge_lm6" class="leftmenu-badge hide"></span></a></li>
+	</ul>
+	<!-- end: left menu -->
+
+
+     
+		</div>
+		</div>
+	
+	</div>
+	
+	<div id="wrap">
+	<div id="rightside">
+	
+		<div id="rightside-space">
+		
+		<div id="rightside-menu" class="top-rheight">
+		
+			<!-- menu <980 -->
+     		<div id="rightside-menu-left" class="visible-phone visible-tablet top-lplace">
+     	
+     		
+		<!-- left menu min -->
+		<div id="dropdown_leftmenu2" class="dropdown">
+  			
+  			<a id="leftmenu2" class="dropdown-toggle" data-toggle="dropdown" href="info.html#">
+  			<img class="hide-480" src="application/data/logo.png" alt="Logo"><span class="icon-align-justify icon-white tra-0"></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu topmenu-left">  			
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-tasks icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="index.html">Dashboard</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="orders.html">Orders</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="users.html">Users</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="products.html">Products</a></div>
+  				</li>	
+  				
+  				<li class="submenumin_products">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="ptypes.html">Product Types</a></div>
+  				</li>
+  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="content.html">//Content</a></div>
+				</li>
+				
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="charts.html">Charts</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="tables.html">Tables</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="forms.html">Forms</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="typography.html">Typography</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="interface.html">Ux</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="boxes.html">Boxes</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="grid.html">Grid</a></div>
+  				</li>
+		  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-lock icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="login.html">Login</a></div>
+  				</li>
+  			</ul>
+  			</div>
+  			
+		</div>
+		<!-- end: left menu min -->
+
+     	
+     		</div>
+     		<!-- end - menu <980 -->
+		
+			<div id="rightside-menu-right">
+			
+						
+			<div class="top-btn top-bwidth">
+				
+			<!-- toolbox -->
+			<div id="dropdown_toolbox" class="dropdown">
+  			
+  			<a id="toolbox" class="dropdown-toggle" data-toggle="dropdown" href="info.html#">
+  			<span class="white"><i class="icon-wrench icon-white tra"></i></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu">
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-hdd icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="filemanager.html">File Manager</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-cog icon-white tra"></i></div>
+  					<div class="topmenu-opt"><span class="disabled">Settings</span></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-question-sign icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="info.html">Info</a></div>
+  				</li>	
+  			</ul> 				
+  			</div>
+  			
+			</div>
+			<!-- end: toolbox -->
+
+			</div>	
+			<div class="top-btn top-bwidth">
+				
+			<a href="info.html#myModal" role="button" class="white" data-toggle="modal"><i class="icon-off icon-white tra-0"></i></a>
+
+			</div>	
+			<div class="top-btn top-bwidth-not">
+				
+			<!-- notifications -->
+			<div id="dropdown_notification" class="dropdown">
+  			
+  			<a id="notification" class="dropdown-toggle" data-toggle="dropdown" href="info.html#">
+  			<span class="white topmenu-mainopt visible-616">Notifications <span id="badge_notif" class="topmenu-badge hide"></span></span><span class="white topmenu-mainopt hide-616"><span id="badge_notif2" class="topmenu-badge hide"></span></span>
+  			</a>
+
+  			<div class="dropdown-menu topmenu-menu notif-menu">  			
+  			<ul id="notification_content_last" class="nav topmenu" style="display:none">
+  			</ul>
+  			<ul id="notification_content" class="nav topmenu">
+  			</ul>  			
+  			</div>
+  			
+			</div>
+			<!-- end: notifications -->
+
+			</div>	
+			<div class="top-btn-sea">
+				
+			<!-- search -->
+			<form class="form-search form-nomargin">
+				
+				<div class="input-append">
+				<input class="search-query minih" style="width:50px" type="text">
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+				
+			</form>
+			<!-- end: search -->
+
+			</div>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div id="rightside-content">
+			
+			<!-- page header -->
+	 		
+	<div class="pagestatus">
+     	
+     	<div class="pagestatus-right">
+			<!-- right -->
+			
+			<!-- end: right -->
+		</div>
+		
+     	<ul class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a> /
+			</li>
+		</ul><br>
+		Info
+     
+     </div>
+
+     		<!-- end: page header --> 		
+		
+     		<div class="container-fluid">
+	 		<!-- main content -->
+	 		
+	 
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-plus tra"></i></span><span class="box-r-top-title">
+				Components
+			</span>
+			<div class="box-r-top-right">
+				
+			</div>
+		</div>					
+		<div id="box_0_content" class="box-r-content">
+     		
+     			<div class="container-fluid margin-top container-box">
+			
+				<div class="row-fluid margin-bottom">
+				
+				<div class="span8">
+					
+     			<h4>Tables</h4>
+     			<small>
+     			Own dynamic table library. Hande big tables with partially loaded data.<br>
+     			Author: Thomas John (http://thomasjohn.eu), 2012<br>
+     			<a href="orders.html">Example</a>
+     			</small>
+				
+				<hr>
+				
+				<h4>Notifications &amp;badges</h4>
+				<small>
+     			Own easy to use library for notifications and badges (sum badges).<br>
+     			Author: Thomas John (http://thomasjohn.eu), 2012<br>
+     			<a href="index.html">Example</a>
+     			</small>
+     			
+				<hr>
+				
+				<h4>Live</h4>
+				<small>
+     			Own library - read data from server (cycle) or/and by request.<br>
+     			Author: Thomas John (http://thomasjohn.eu), 2012<br>
+     			Example: Check console.
+     			</small>
+     			
+				<hr>
+				
+				<h4>+Charts</h4>
+				<small>
+     			With own interface to Flot (static charts and animated donuts).<br>
+     			Author (interface): Thomas John (http://thomasjohn.eu), 2012<br>
+     			<a href="charts.html">Example</a>
+     			</small>
+     			
+				<hr>
+				
+				<h4>+Calendar</h4>
+				<small>
+     			Styled FullCalendar.<br>
+     			<a href="index.html">Example</a>
+     			</small>
+     			
+				<hr>
+				
+				<h4>+File Manager</h4>
+				<small>
+     			Example file manager: Elfinder.<br>
+     			<a href="filemanager.html">Example</a>
+     			</small>
+     			
+				</div>
+				
+				<div class="span4">
+				
+				
+				<h4>Thank you</h4>
+			
+				<hr>
+				
+				<small>
+				
+				Flot - <a href="http://www.flotcharts.org" target="_blank">Website</a>
+				<br><br>
+				
+				Copyright (c) 2007-2009 IOLA and Ole Laursen<br>
+<br>
+"Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:<br>
+<br>
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.<br>
+<br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE."
+
+				</small>
+				<hr>
+				<small>
+				
+				FullCalendar - <a href="http://arshaw.com/fullcalendar/" target="_blank">Website</a>
+				<br><br>
+				
+				Copyright (c) 2009 Adam Shaw<br>
+<br>
+"Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:<br>
+<br>
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.<br>
+<br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+
+				</small>
+				<hr>
+				<small>
+				
+				Elfinder - <a href="https://github.com/Studio-42/elFinder" target="_blank">Website</a>
+				<br><br>
+				
+				Copyright (c) 2009-2012, Studio 42<br>
+All rights reserved.<br>
+<br>
+"Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:<br>
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.<br>
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.<br>
+    * Neither the name of the Studio 42 Ltd. nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.<br>
+<br>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL "STUDIO 42" BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+
+				</small>
+				
+				</div>
+				
+				</div>
+				</div>
+				
+		</div>		
+     	</div>
+     	<!-- end: box-r -->
+     	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-heart tra"></i></span><span class="box-r-top-title">
+				Icons
+			</span>
+			<div class="box-r-top-right">
+				
+			</div>
+		</div>					
+		<div id="box_0b_content" class="box-r-content">
+		
+			<div class="container-fluid container-box margin-top">
+			
+				<div class="row-fluid">
+				
+				<div class="span12">
+					<a href="http://glyphicons.com/" target="_blank">140 icons in sprite form, available in dark gray (default) and white, provided by Glyphicons.</a>
+				</div>
+				
+				</div>
+				
+			</div>
+
+		</div>
+		</div>
+	
+	</div>
+	
+	</div>
+	 
+
+     		<!-- end: main content -->
+     		</div>
+     
+     		<div class="container-end"></div>
+		
+		</div>
+		
+		<div id="rightside-foot">
+			
+			
+	<div class="footmenu">
+	 Muffin Admin Cake v1.04 © <a href="http://thomasjohn.eu" target="_blank">Thomas John</a>, 2012 - <a href="mailto:mail@thomasjohn.eu">Mail</a> 
+	 
+	 <div class="pull-right margin-right">
+	 </div>
+
+	 </div>
+
+     
+     		<div class="container-end"></div>
+     		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+			
+  </body>
+</html>

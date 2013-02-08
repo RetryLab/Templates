@@ -1,0 +1,578 @@
+
+	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Muffin Admin Cake</title>
+    
+    <!-- Bootstrap -->
+    <link href="application/add/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="application/add/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <link href="application/style/style.css" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.print.css' media='print' />
+	
+  </head>
+  
+  <body>
+
+	<!-- bootstrap -->
+    <script src="application/add/jquery-1.8.3.min.js"></script>
+    <script src="application/add/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- charts -->
+    <script type="text/javascript" src="application/add/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="application/add/flot/jquery.flot.pie.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.stack.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.resize.js"></script>
+	
+	<!-- calendar -->
+	<script type='text/javascript' src='application/add/fullcalendar/fullcalendar.min.js'></script>		
+		
+	
+	<!-- muffin -->
+	<script type="text/javascript" src="application/js/lib_tables.js"></script>	
+	<script type="text/javascript" src="application/js/lib_chart.js"></script>
+	<script type="text/javascript" src="application/js/lib_boxes.js"></script>
+	<script type="text/javascript" src="application/js/lib_notifications.js"></script>
+	<script type="text/javascript" src="application/js/lib_calendar.js"></script>	
+	<script type="text/javascript" src="application/js/lib_live.js"></script>
+	<script type="text/javascript" src="application/js/lib_main.js"></script>
+
+
+	
+	
+	<script type="text/javascript">
+	
+	function thispage(){
+		
+		//alert("ready");	
+
+		//icon +/-
+		
+		expandableBoxes(['1','2','3']);
+		expandableSections(['1']);	//array with boxes ids
+		
+		
+		//menu
+
+		$('#lm5').addClass('leftmenu-activeopt');	//activate left menu option
+		$('#lm5-6').addClass('leftmenu-sub-activeopt');
+		$('.submenumin_products').collapse('hide');		
+		$('#submenu_products').collapse('hide');
+		
+	}
+	
+	</script>
+
+	
+     
+	<!-- Modal -->
+	<div id="calModal" class="modal hide shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="calModalLabel">Remove?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button id="calModal_ok" class="btn btn-inverse" data-dismiss="modal">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Logout?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-inverse">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Main -->
+	
+	
+	<div id="leftside" class="hidden-phone hidden-tablet">
+		
+		<div style="background-image:url('application/design/mbg.png')">
+		<div id="leftside-logo">
+		
+			<img src="application/data/logo.png" alt="Logo">
+			
+		</div>
+		<div>
+		
+			
+
+	<!-- left menu -->
+	<ul class="nav leftmenu">
+  		<li id="lm1" class="leftmenu-opt"><a href="index.html">Dashboard<span id="badge_lm1" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm2" class="leftmenu-opt"><a href="orders.html">Orders<span id="badge_lm2" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm3" class="leftmenu-opt"><a href="users.html">Users<span id="badge_lm3" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm4" class="leftmenu-opt"><a href="products.html">Products<span id="badge_lm4" class="leftmenu-badge hide"></span></a>
+  		
+  		<div id="submenu_products" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm4-1"><a href="ptypes.html">Product Types <span id="badge_lm4_1" class="leftmenu-sub-badge hide"></span></a></li>
+   		</ul>
+   		</div>
+  		
+  		</li>
+  		<li id="lm5" class="leftmenu-opt"><a href="content.html">//Content<span id="badge_lm5" class="leftmenu-badge hide"></span></a>
+  		 
+  		<div id="submenu_content" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm5-4"><a href="charts.html">Charts</a></li>
+  				<li id="lm5-2"><a href="tables.html">Tables</a></li>
+  				<li id="lm5-3"><a href="forms.html">Forms</a></li>		
+  				<li id="lm5-1"><a href="typography.html">Typography</a></li>
+  				<li id="lm5-5"><a href="interface.html">Ux</a></li>
+  				<li id="lm5-6"><a href="boxes.html">Boxes</a></li>
+  				<li id="lm5-7"><a href="grid.html">Grid</a></li>
+   		</ul>
+   		</div>
+   		
+   		</li>
+  		<li id="lm6" class="leftmenu-opt"><a href="login.html">Login<span id="badge_lm6" class="leftmenu-badge hide"></span></a></li>
+	</ul>
+	<!-- end: left menu -->
+
+
+     
+		</div>
+		</div>
+	
+	</div>
+	
+	<div id="wrap">
+	<div id="rightside">
+	
+		<div id="rightside-space">
+		
+		<div id="rightside-menu" class="top-rheight">
+		
+			<!-- menu <980 -->
+     		<div id="rightside-menu-left" class="visible-phone visible-tablet top-lplace">
+     	
+     		
+		<!-- left menu min -->
+		<div id="dropdown_leftmenu2" class="dropdown">
+  			
+  			<a id="leftmenu2" class="dropdown-toggle" data-toggle="dropdown" href="boxes.html#">
+  			<img class="hide-480" src="application/data/logo.png" alt="Logo"><span class="icon-align-justify icon-white tra-0"></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu topmenu-left">  			
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-tasks icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="index.html">Dashboard</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="orders.html">Orders</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="users.html">Users</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="products.html">Products</a></div>
+  				</li>	
+  				
+  				<li class="submenumin_products">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="ptypes.html">Product Types</a></div>
+  				</li>
+  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="content.html">//Content</a></div>
+				</li>
+				
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="charts.html">Charts</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="tables.html">Tables</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="forms.html">Forms</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="typography.html">Typography</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="interface.html">Ux</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="boxes.html">Boxes</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="grid.html">Grid</a></div>
+  				</li>
+		  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-lock icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="login.html">Login</a></div>
+  				</li>
+  			</ul>
+  			</div>
+  			
+		</div>
+		<!-- end: left menu min -->
+
+     	
+     		</div>
+     		<!-- end - menu <980 -->
+		
+			<div id="rightside-menu-right">
+			
+						
+			<div class="top-btn top-bwidth">
+				
+			<!-- toolbox -->
+			<div id="dropdown_toolbox" class="dropdown">
+  			
+  			<a id="toolbox" class="dropdown-toggle" data-toggle="dropdown" href="boxes.html#">
+  			<span class="white"><i class="icon-wrench icon-white tra"></i></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu">
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-hdd icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="filemanager.html">File Manager</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-cog icon-white tra"></i></div>
+  					<div class="topmenu-opt"><span class="disabled">Settings</span></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-question-sign icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="info.html">Info</a></div>
+  				</li>	
+  			</ul> 				
+  			</div>
+  			
+			</div>
+			<!-- end: toolbox -->
+
+			</div>	
+			<div class="top-btn top-bwidth">
+				
+			<a href="boxes.html#myModal" role="button" class="white" data-toggle="modal"><i class="icon-off icon-white tra-0"></i></a>
+
+			</div>	
+			<div class="top-btn top-bwidth-not">
+				
+			<!-- notifications -->
+			<div id="dropdown_notification" class="dropdown">
+  			
+  			<a id="notification" class="dropdown-toggle" data-toggle="dropdown" href="boxes.html#">
+  			<span class="white topmenu-mainopt visible-616">Notifications <span id="badge_notif" class="topmenu-badge hide"></span></span><span class="white topmenu-mainopt hide-616"><span id="badge_notif2" class="topmenu-badge hide"></span></span>
+  			</a>
+
+  			<div class="dropdown-menu topmenu-menu notif-menu">  			
+  			<ul id="notification_content_last" class="nav topmenu" style="display:none">
+  			</ul>
+  			<ul id="notification_content" class="nav topmenu">
+  			</ul>  			
+  			</div>
+  			
+			</div>
+			<!-- end: notifications -->
+
+			</div>	
+			<div class="top-btn-sea">
+				
+			<!-- search -->
+			<form class="form-search form-nomargin">
+				
+				<div class="input-append">
+				<input class="search-query minih" style="width:50px" type="text">
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+				
+			</form>
+			<!-- end: search -->
+
+			</div>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div id="rightside-content">
+			
+			<!-- page header -->
+	 		
+	<div class="pagestatus">
+     	
+     	<span class="pagestatus-right">
+			<!-- right -->
+			<a href="content.html" class="btn btn-small"><i class="icon-align-justify"></i></a> <a href="interface.html" class="btn btn-small">Step 3: Interface</a>
+			<!-- end: right -->
+		</span>
+		
+     	<ul class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a> / <a href="content.html">Content</a> /
+			</li>
+		</ul><br>
+		Boxes
+     
+     </div>
+
+     		<!-- end: page header --> 		
+		
+     		<div class="container-fluid">
+	 		<!-- main content -->
+	 		
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span8">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Title - type 1
+			</span>
+			<div class="box-r-top-right">
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Button 1</button>
+					<button class="btn btn-mini" type="button">Button 2</button>
+				</div>
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Button 3</button>
+				</div>
+				<span id="badge_social" class="box-badge badge-red margin-left">7</span> <a href="boxes.html#self" data-toggle="collapse" data-target="#box_1_content"><i id="box_1_expand" class="icon-minus-sign tra"></i></a>
+			</div>
+		</div>					
+		<div id="box_1_content" class="box-r-content collapse in">
+     		<code>content</code>
+		</div>		
+		<div class="box-r-status">
+			Status line. <i class="icon-refresh tra"></i>
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     
+	 </div>
+	 
+	 <div class="span4">
+	 
+	 	<!-- box-c -->
+	 	<div class="box-c">
+	 		<code>content</code>
+	 	</div>
+	 	<div class="box-c-title">Title - type 2 <span id="badge_social2" class="box-badge">7</span></div>
+	 	<!-- end: box-c -->
+	 	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 <div class="page-header"><a href="boxes.html#self" id="section_1">Options <i id="section_1_expand" class="icon-minus-sign tra"></i></a></div>
+     
+     <div class="alert alert-header alert-info">
+  			<button type="button" class="close" data-dismiss="alert">×</button>
+  		7 is a badge.
+	 </div>
+     
+     
+     <div id="section_1_content">     
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span4">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r">
+		<div class="alert">
+  		<button type="button" class="close" data-dismiss="alert">×</button>
+  			Alert!
+		</div>		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Title
+			</span>
+			<div class="box-r-top-right">
+				
+			</div>
+		</div>					
+		<div id="box_0_content" class="box-r-content">
+     		<code>content</code>
+		</div>
+		<div class="box-r-status">
+			With alert.
+		</div>
+     	</div>
+     	<!-- end: box-r -->	
+     	
+	 </div>
+	 <div class="span4">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r">		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Without status line
+			</span>
+			<div class="box-r-top-right">
+				<a href="boxes.html#self" data-toggle="collapse" data-target="#box_2_content"><i id="box_2_expand" class="icon-minus-sign tra"></i></a>
+			</div>
+		</div>					
+		<div id="box_2_content" class="box-r-content collapse in">
+     		<code>content</code>
+		</div>		
+     	</div>
+     	<!-- end: box-r -->
+     	
+	 </div>
+	 <div class="span4">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r">				
+		<div id="box_0a_content" class="box-r-content">
+     		<code>content</code>
+		</div>		
+		<div class="box-r-status">
+			Without title.
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+	 	<!-- box-r -->
+	 	<div class="box-r">					
+		<div id="box_0b_content" class="box-r-content">
+     		<code>content</code>
+		</div>		
+     	</div>
+     	<!-- end: box-r -->
+     	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r">		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Title
+			</span>
+			<div class="box-r-top-right">
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">B1</button>
+					<button class="btn btn-mini" type="button">B2</button>
+				</div>
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Button</button>
+				</div>
+				<span id="badge_social3" class="box-badge margin-left">7</span> <a href="boxes.html#self" data-toggle="collapse" data-target="#box_3_content" data-parent="#fa111lse"><i id="box_3_expand" class="icon-minus-sign tra"></i></a>
+			</div>
+		</div>					
+		<div id="box_3_content" class="box-r-content collapse in">
+     		
+     		<div class="tabbable tabs-below">
+           		<ul class="nav nav-tabs">
+                <li class="active"><a href="boxes.html#A" data-toggle="tab">Typography</a></li>
+                <li><a href="boxes.html#B" data-toggle="tab">Interface</a></li>
+              	</ul>
+        
+     			<div class="tab-content">
+                
+                <div class="tab-pane active" id="A">
+                  	<div class="box-r-content">
+					<code>content 1</code>
+					</div>
+                </div>
+                <div class="tab-pane" id="B">
+                  	<div class="box-r-content">
+					<code>content 2</code>
+					</div>
+                </div>
+                
+     			</div>
+                       
+     	 	</div>
+     	 
+		</div>		
+		<div class="box-r-status">
+			With tabs.
+		</div>
+     	</div>
+     	<!-- end: box-r -->
+     	 
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 </div>
+
+
+     		<!-- end: main content -->
+     		</div>
+     
+     		<div class="container-end"></div>
+		
+		</div>
+		
+		<div id="rightside-foot">
+			
+			
+	<div class="footmenu">
+	 Muffin Admin Cake v1.04 © <a href="http://thomasjohn.eu" target="_blank">Thomas John</a>, 2012 - <a href="mailto:mail@thomasjohn.eu">Mail</a> 
+	 
+	 <div class="pull-right margin-right">
+	 </div>
+
+	 </div>
+
+     
+     		<div class="container-end"></div>
+     		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+			
+  </body>
+</html>

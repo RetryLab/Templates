@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Maniadmin | Fluid design | Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Maniadmin">
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <!--  styles -->
+         <!-- bootstrap css -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+         <!-- base css -->
+        <link href="css/base.css" rel="stylesheet">
+         <!-- login page css -->
+        <link href="css/login.css" rel="stylesheet">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- fav and touch icons -->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class='singup' style='display:none;'>
+                    <div class="accounts-form" id="signup">
+                        <h2>Create your free account</h2>
+                        <hr class="small">
+
+                        <form id="auth-form" class="clearfix" autocomplete="off" method="POST" action="login.html">
+
+                            <div class="input">
+                                <input type="text" maxlength="30" name="username" placeholder="Username" id="id_username" required>
+                            </div>
+                            <div class="input">
+                                <input type="text" maxlength="75" name="email" placeholder="Email" id="id_email" required>
+                                <div class="email_suggestion" style="display: none;"></div>
+                            </div>
+                            <div class="input">
+                                <input type="password" id="id_password" name="password" placeholder="Password" required>
+                            </div>
+
+                            <div class="actions">
+                                <input type="submit" class="btn btn-success" value="Create account">
+                            </div>
+                            <p class="note"><span class="label label-warning">Already have an account?</span> &nbsp;<a href="login.html#">Log in</a></p>
+                        </form>
+                    </div>
+                </div>
+                <div class='singin'  style='display:block;'>
+                    <div class="accounts-form">
+                        <h2>Log in to your account</h2>
+                        <hr class="small">
+
+                        <form id="singup" class="clearfix" autocomplete="off" method="POST" action="index.html">
+
+                            <div class="input">
+                                <input type="text" maxlength="30" name="username" placeholder="Username" id="username" required>
+                            </div>
+                            <div class="input">
+                                <input type="password" id="password" name="password" placeholder="Password" required>
+                            </div>
+
+                            <div class="actions">
+                                <input type="submit" class="btn btn-success" value="Log in">
+                            </div>
+                            <p class="note"><span class="label label-info"> Need an account? </span>  &nbsp; <a href="login.html#"> Sign up</a> </p>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+            $('.note a').click(function(){
+                $('.singup').toggle(1000);
+                $('.singin').toggle(1000);
+
+
+            });
+
+        </script>    
+    </body>
+</html>

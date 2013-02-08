@@ -1,0 +1,543 @@
+
+	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Muffin Admin Cake</title>
+    
+    <!-- Bootstrap -->
+    <link href="application/add/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="application/add/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <link href="application/style/style.css" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.print.css' media='print' />
+	
+  </head>
+  
+  <body>
+
+	<!-- bootstrap -->
+    <script src="application/add/jquery-1.8.3.min.js"></script>
+    <script src="application/add/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- charts -->
+    <script type="text/javascript" src="application/add/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="application/add/flot/jquery.flot.pie.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.stack.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.resize.js"></script>
+	
+	<!-- calendar -->
+	<script type='text/javascript' src='application/add/fullcalendar/fullcalendar.min.js'></script>		
+		
+	
+	<!-- muffin -->
+	<script type="text/javascript" src="application/js/lib_tables.js"></script>	
+	<script type="text/javascript" src="application/js/lib_chart.js"></script>
+	<script type="text/javascript" src="application/js/lib_boxes.js"></script>
+	<script type="text/javascript" src="application/js/lib_notifications.js"></script>
+	<script type="text/javascript" src="application/js/lib_calendar.js"></script>	
+	<script type="text/javascript" src="application/js/lib_live.js"></script>
+	<script type="text/javascript" src="application/js/lib_main.js"></script>
+
+
+	
+	
+	<script type="text/javascript">
+	
+	function thispage(){
+		
+		//alert("thispage");	
+		
+		
+		//menu
+
+		$('#lm5').addClass('leftmenu-activeopt');	//activate left menu option
+		$('#lm5-1').addClass('leftmenu-sub-activeopt');
+		$('.submenumin_products').collapse('hide');		
+		$('#submenu_products').collapse('hide');
+		
+	}
+
+	</script>	
+
+	
+     
+	<!-- Modal -->
+	<div id="calModal" class="modal hide shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="calModalLabel">Remove?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button id="calModal_ok" class="btn btn-inverse" data-dismiss="modal">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Logout?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-inverse">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Main -->
+	
+	
+	<div id="leftside" class="hidden-phone hidden-tablet">
+		
+		<div style="background-image:url('application/design/mbg.png')">
+		<div id="leftside-logo">
+		
+			<img src="application/data/logo.png" alt="Logo">
+			
+		</div>
+		<div>
+		
+			
+
+	<!-- left menu -->
+	<ul class="nav leftmenu">
+  		<li id="lm1" class="leftmenu-opt"><a href="index.html">Dashboard<span id="badge_lm1" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm2" class="leftmenu-opt"><a href="orders.html">Orders<span id="badge_lm2" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm3" class="leftmenu-opt"><a href="users.html">Users<span id="badge_lm3" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm4" class="leftmenu-opt"><a href="products.html">Products<span id="badge_lm4" class="leftmenu-badge hide"></span></a>
+  		
+  		<div id="submenu_products" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm4-1"><a href="ptypes.html">Product Types <span id="badge_lm4_1" class="leftmenu-sub-badge hide"></span></a></li>
+   		</ul>
+   		</div>
+  		
+  		</li>
+  		<li id="lm5" class="leftmenu-opt"><a href="content.html">//Content<span id="badge_lm5" class="leftmenu-badge hide"></span></a>
+  		 
+  		<div id="submenu_content" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm5-4"><a href="charts.html">Charts</a></li>
+  				<li id="lm5-2"><a href="tables.html">Tables</a></li>
+  				<li id="lm5-3"><a href="forms.html">Forms</a></li>		
+  				<li id="lm5-1"><a href="typography.html">Typography</a></li>
+  				<li id="lm5-5"><a href="interface.html">Ux</a></li>
+  				<li id="lm5-6"><a href="boxes.html">Boxes</a></li>
+  				<li id="lm5-7"><a href="grid.html">Grid</a></li>
+   		</ul>
+   		</div>
+   		
+   		</li>
+  		<li id="lm6" class="leftmenu-opt"><a href="login.html">Login<span id="badge_lm6" class="leftmenu-badge hide"></span></a></li>
+	</ul>
+	<!-- end: left menu -->
+
+
+     
+		</div>
+		</div>
+	
+	</div>
+	
+	<div id="wrap">
+	<div id="rightside">
+	
+		<div id="rightside-space">
+		
+		<div id="rightside-menu" class="top-rheight">
+		
+			<!-- menu <980 -->
+     		<div id="rightside-menu-left" class="visible-phone visible-tablet top-lplace">
+     	
+     		
+		<!-- left menu min -->
+		<div id="dropdown_leftmenu2" class="dropdown">
+  			
+  			<a id="leftmenu2" class="dropdown-toggle" data-toggle="dropdown" href="typography.html#">
+  			<img class="hide-480" src="application/data/logo.png" alt="Logo"><span class="icon-align-justify icon-white tra-0"></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu topmenu-left">  			
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-tasks icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="index.html">Dashboard</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="orders.html">Orders</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="users.html">Users</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="products.html">Products</a></div>
+  				</li>	
+  				
+  				<li class="submenumin_products">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="ptypes.html">Product Types</a></div>
+  				</li>
+  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="content.html">//Content</a></div>
+				</li>
+				
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="charts.html">Charts</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="tables.html">Tables</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="forms.html">Forms</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="typography.html">Typography</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="interface.html">Ux</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="boxes.html">Boxes</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="grid.html">Grid</a></div>
+  				</li>
+		  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-lock icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="login.html">Login</a></div>
+  				</li>
+  			</ul>
+  			</div>
+  			
+		</div>
+		<!-- end: left menu min -->
+
+     	
+     		</div>
+     		<!-- end - menu <980 -->
+		
+			<div id="rightside-menu-right">
+			
+						
+			<div class="top-btn top-bwidth">
+				
+			<!-- toolbox -->
+			<div id="dropdown_toolbox" class="dropdown">
+  			
+  			<a id="toolbox" class="dropdown-toggle" data-toggle="dropdown" href="typography.html#">
+  			<span class="white"><i class="icon-wrench icon-white tra"></i></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu">
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-hdd icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="filemanager.html">File Manager</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-cog icon-white tra"></i></div>
+  					<div class="topmenu-opt"><span class="disabled">Settings</span></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-question-sign icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="info.html">Info</a></div>
+  				</li>	
+  			</ul> 				
+  			</div>
+  			
+			</div>
+			<!-- end: toolbox -->
+
+			</div>	
+			<div class="top-btn top-bwidth">
+				
+			<a href="typography.html#myModal" role="button" class="white" data-toggle="modal"><i class="icon-off icon-white tra-0"></i></a>
+
+			</div>	
+			<div class="top-btn top-bwidth-not">
+				
+			<!-- notifications -->
+			<div id="dropdown_notification" class="dropdown">
+  			
+  			<a id="notification" class="dropdown-toggle" data-toggle="dropdown" href="typography.html#">
+  			<span class="white topmenu-mainopt visible-616">Notifications <span id="badge_notif" class="topmenu-badge hide"></span></span><span class="white topmenu-mainopt hide-616"><span id="badge_notif2" class="topmenu-badge hide"></span></span>
+  			</a>
+
+  			<div class="dropdown-menu topmenu-menu notif-menu">  			
+  			<ul id="notification_content_last" class="nav topmenu" style="display:none">
+  			</ul>
+  			<ul id="notification_content" class="nav topmenu">
+  			</ul>  			
+  			</div>
+  			
+			</div>
+			<!-- end: notifications -->
+
+			</div>	
+			<div class="top-btn-sea">
+				
+			<!-- search -->
+			<form class="form-search form-nomargin">
+				
+				<div class="input-append">
+				<input class="search-query minih" style="width:50px" type="text">
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+				
+			</form>
+			<!-- end: search -->
+
+			</div>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div id="rightside-content">
+			
+			<!-- page header -->
+	 		
+	<div class="pagestatus">
+     	
+     	<span class="pagestatus-right">
+			<!-- right -->
+			<a href="content.html" class="btn btn-small"><i class="icon-align-justify"></i></a> <a href="forms.html" class="btn btn-small">Step 5: Forms</a>
+			<!-- end: right -->
+		</span>
+		
+     	<ul class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a> / <a href="content.html">Content</a> /
+			</li>
+		</ul><br>
+		Typography
+     
+     </div>
+
+     		<!-- end: page header --> 		
+		
+     		<div class="container-fluid">
+	 		<!-- main content -->
+	 		
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span9">
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-th-list tra"></i></span><span class="box-r-top-title">
+				Text
+			</span>
+			<div class="box-r-top-right">
+				
+			</div>
+		</div>					
+		<div id="box_0_content" class="box-r-content">
+     		
+<div class="container-fluid margin-top container-box">
+			
+				<div class="row-fluid margin-bottom">
+				
+					<div class="span12">
+					
+					<p class="text-imp">
+					Ice cream wafer gummi bears. Pastry topping sesame snaps sugar plum sesame snaps danish marzipan dragée sesame snaps. Muffin applicake jelly beans bear claw. Tart cookie toffee marshmallow biscuit. Soufflé fruitcake caramels wypas. Chocolate applicake dessert dragée gummi bears macaroon. Carrot cake pastry chocolate cake cookie pie. Chocolate bar wypas carrot cake. Liquorice jelly-o marzipan biscuit sugar plum marshmallow tart cookie. Sugar plum macaroon sesame snaps powder jujubes.
+					</p>
+					<p class="text-imp">
+					Sweet marshmallow candy cotton candy jujubes marshmallow. Gummies dragée cheesecake. Cupcake gummies caramels soufflé danish candy canes tart cheesecake. Chocolate jelly-o chupa chups muffin donut danish wypas powder.
+					</p>
+					</div>
+				
+				</div>
+				
+				<div class="row-fluid">
+				
+					<div class="span8">
+					<h5>Title.</h5>
+					<p class="text-imp">
+					Faworki pastry tootsie roll icing candy toffee sweet oat cake wafer. Sugar plum dessert liquorice. Donut cookie sesame snaps lemon drops. Tootsie roll tart sesame snaps dragée gummies candy candy canes macaroon. Brownie cheesecake dessert tiramisu candy canes bonbon. Donut sesame snaps croissant biscuit marshmallow candy canes cotton candy. Sweet roll sugar plum chocolate sesame snaps.
+					</p>
+					
+					<blockquote>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+</blockquote>
+
+
+					</div>
+					
+					<div class="span4">
+					<div class="ibox padding-10">
+					
+            		<h3>h3. Heading 3</h3>
+            		<h4>h4. Heading 4</h4>
+            		<h5>h5. Heading 5</h5>
+            		<h6>h6. Heading 6</h6>
+            
+					</div>
+					</div>
+				
+				</div>
+				
+				
+			
+			</div>
+
+
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+	 </div>
+	 
+	 <div class="span3">
+	 	<!-- box-r -->
+	 	<div class="box-r"> 							
+		<div id="box_0a_content" class="box-r-content">
+			<div class="container-fluid container-box margin-both">
+     			
+			<ul>
+  			<li>Chocolate</li>
+  			<li>Carrot</li>
+  			<li>Powder</li>
+			</ul>
+			<hr>
+			<ol>
+  			<li>Chocolate</li>
+  			<li>Powder</li>
+  			<li>Carrot</li>
+			</ol>
+			<hr>
+			<ul class="unstyled">
+  			<li>&nbsp;& Chocolate</li>
+  			<li>&nbsp;& Carrot</li>
+  			<li>&nbsp;& Powder</li>
+			</ul>
+
+     		</div>
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	  <div class="page-header"></div>
+	  
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	<!-- box-r -->
+	 	<div class="box-r">					
+		<div id="box_0b_content" class="box-r-content">
+     		
+     		<div class="container-fluid margin-top container-box">
+			
+				<div class="row-fluid">
+				
+					<div class="span12">
+						
+<p class="lead"><abbr title="Delicious, delicious...">Chocolate jelly-o chupa chups muffin donut danish wypas powder.</abbr></p>
+
+
+					<blockquote class="pull-right">
+
+					<p><strong>Example: Bold.</strong></p>
+					<p><em>Example: Italics.</em></p>
+					<p><small>Example: Small.</small></p>
+					<p class="muted">Muted: Chocolate jelly-o chupa chups muffin donut danish wypas powder.</p>
+					<p class="text-warning">Warning: Chocolate jelly-o chupa chups muffin donut danish wypas powder.</p>
+					<p class="text-error">Error: Chocolate jelly-o chupa chups muffin donut danish wypas powder.</p>
+					<p class="text-info">Info: Chocolate jelly-o chupa chups muffin donut danish wypas powder.</p>
+					<p class="text-success">Success: Chocolate jelly-o chupa chups muffin donut danish wypas powder.</p>
+					
+					</blockquote>
+					
+					<address class="margin-top">
+  <strong>Twitter, Inc.</strong><br>
+  795 Folsom Ave, Suite 600<br>
+  San Francisco, CA 94107<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:mail@thomasjohn.eu">mail@thomasjohn.eu</a>
+</address>
+
+					</div>
+				
+				</div>	
+			
+			</div>
+	
+			
+		</div>				
+     	</div>
+     	<!-- end: box-r -->	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+
+     		<!-- end: main content -->
+     		</div>
+     
+     		<div class="container-end"></div>
+		
+		</div>
+		
+		<div id="rightside-foot">
+			
+			
+	<div class="footmenu">
+	 Muffin Admin Cake v1.04 © <a href="http://thomasjohn.eu" target="_blank">Thomas John</a>, 2012 - <a href="mailto:mail@thomasjohn.eu">Mail</a> 
+	 
+	 <div class="pull-right margin-right">
+	 </div>
+
+	 </div>
+
+     
+     		<div class="container-end"></div>
+     		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+			
+  </body>
+</html>

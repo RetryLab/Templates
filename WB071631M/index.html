@@ -1,0 +1,1001 @@
+
+	
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	
+    <title>Muffin Admin Cake</title>
+    
+    <!-- Bootstrap -->
+    <link href="application/add/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="application/add/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
+    <link href="application/style/style.css" rel="stylesheet">
+    
+    <link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.css' />
+	<link rel='stylesheet' type='text/css' href='application/add/fullcalendar/fullcalendar.print.css' media='print' />
+	
+  </head>
+  
+  <body>
+
+	<!-- bootstrap -->
+    <script src="application/add/jquery-1.8.3.min.js"></script>
+    <script src="application/add/bootstrap/js/bootstrap.js"></script>
+    
+    <!-- charts -->
+    <script type="text/javascript" src="application/add/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="application/add/flot/jquery.flot.pie.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.stack.js"></script>
+	<script type="text/javascript" src="application/add/flot/jquery.flot.resize.js"></script>
+	
+	<!-- calendar -->
+	<script type='text/javascript' src='application/add/fullcalendar/fullcalendar.min.js'></script>		
+		
+	
+	<!-- muffin -->
+	<script type="text/javascript" src="application/js/lib_tables.js"></script>	
+	<script type="text/javascript" src="application/js/lib_chart.js"></script>
+	<script type="text/javascript" src="application/js/lib_boxes.js"></script>
+	<script type="text/javascript" src="application/js/lib_notifications.js"></script>
+	<script type="text/javascript" src="application/js/lib_calendar.js"></script>	
+	<script type="text/javascript" src="application/js/lib_live.js"></script>
+	<script type="text/javascript" src="application/js/lib_main.js"></script>
+
+
+	
+	
+	<script type="text/javascript">
+    
+    //monitor
+    var gdata;
+	var s=25;
+	
+    function live_handleData(txtres){
+    	
+    	var res=[];
+
+    	colog("Live - result: "+txtres);
+    	
+    	
+    	//decode txtres
+    	//...
+    	
+    	
+    	//fake
+    	//nid - notification id can be local value or (better) number from server
+    	switch (live_counter)
+    	{
+    		case 1:
+    			notification_add('Welcome to Muffin Admin Cake!', 0, '2 hours',1);
+    			break;
+    			
+    		case 2:			
+				//social
+				notification_add('New message from social network.', 5, '1 hour',2);	
+				$('#box_2_content').collapse('show');
+    			break;
+		
+			case 4:
+				notification_add('New user registered!', 2, '1 min',4);
+				break;
+				
+			case 7:    			
+    			notification_add('New order.', 3, '1 min',5);
+    			notification_add('Check Products.', 6, '1 min',6);
+    			notification_add('-', 6, '1 min',6);	//example of doubled entry*/
+    			break;
+    		
+    		case 9: 		
+    			notification_add('Check Calendar.', 7, '1 min',3);
+				break;
+				
+    		case 11:
+    			notification_add('Over 6 months without any new product?', 8, '1 min',7);
+    			break;
+    	}
+ 		
+ 		
+    }
+    
+    //animation
+    
+  	function showsold()
+  	{
+  		
+  		if (piea[1][1] && piea[2][1])
+  		{
+  			var data = [];
+			data[0] = 100;
+			data[1] = 0;
+			
+			var type = [];
+			type[0] = ["","255,255,255"];
+			type[1] = ["","255,255,255"]; 	
+    		
+    		chart_update("#chart-top3", data, 4, type);	//render
+    		
+    		if (piea[3]>0)
+				$('#chart3_value').addClass('text-success');
+			else
+				$('#chart3_value').addClass('text-error');
+				
+    		document.getElementById("chart3_value").innerHTML=piea[3]+"$";
+			document.getElementById("chart3_vframe").style.visibility="visible";
+			
+			setTimeout(next2, 10);
+  		}
+  		else
+  			setTimeout(showsold, 100);
+  	}
+  	
+	function thispage(){
+		
+		//alert("thispage");	
+		
+		//handle
+		//...
+		$('#box_2_content').on('hide', function()
+		{
+			notification_remove(2);	
+		}
+		);	
+		
+		//live
+		live_cycleOn(live_handleData);
+		
+		//menu
+		$('#lm1').addClass('leftmenu-activeopt');
+		
+		//sections
+		expandableSections(['1','2']);	//array with sections ids
+		
+		//boxes
+		expandableBoxes(['1','2','3']);	//array with boxes ids
+		
+		next();
+		
+		//top anim
+    	
+    	//temporary - random values
+    	var orders=parseInt(Math.random() * 30);
+    	var newusers=-parseInt(Math.random() * 30);
+    	var sold=114;	//example
+    
+    	//anim
+    	
+    	piea = new Array();
+    	piea[1] = [orders,false];
+    	piea[2] = [newusers,false];
+    	piea[3] = sold;
+    	
+    	showsold();
+    	chart_animpie(1, 0);
+    	chart_animpie(2, 0);
+
+	}
+	
+	function next2(){
+	
+		//menu
+		$('#submenu_products').collapse('hide');
+		$('.submenumin_products').collapse('hide');
+		
+		//demo
+		//$('#submenu_content').collapse('hide');
+		//$('.submenumin_content').collapse('hide');
+	
+		//monitor
+    	  
+    	gdata = [];
+    	 	
+		gdata[0] = [];
+    	for (var i = 0; i < s; i += 0.1)
+    		gdata[0].push([i, Math.cos(i)]);
+        
+        //monitor();
+	}
+	
+	var calinit = false;
+	
+	function showcalendar(){
+	
+		if (calinit)
+			return;
+			
+		calinit = !calinit;	
+		
+		
+		
+		//calendar
+		
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();	
+		
+		calendar = $('#calendar').fullCalendar({
+			header: {
+				left: 'title',
+				right: 'month,agendaWeek,agendaDay today prev,next'
+			},
+			aspectRatio: 2,
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay) {	
+				
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay,
+							id: cal_last_id
+						},
+						true // make the event "stick"
+					);
+					
+					cal_last_id++;
+					
+					setTimeout(cal_save, 750);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			eventClick: function(calEvent, jsEvent, view) {
+        	
+        		if (calEvent.id!=undefined)
+        		{
+        			cal_remove_id = calEvent.id;	
+        			$('#calModal').modal();
+        		}
+
+    		},
+			editable: false,
+
+		});
+		
+		$('#calModal_ok').on('click', function() {
+		
+			cal_remove();
+		
+		})
+
+	
+	
+	}
+	
+	function next(){	
+    	
+    	//Calendar
+    	
+    	$('#section_1').on('click', showcalendar);
+    	
+    	
+    	//Charts
+    
+	    //chart1
+    
+    	//data
+		var data = [];
+	
+  	  data[0] = [];
+ 	   for (var i = 0; i <= 6; i += 1)
+ 	       data[0].push([i, parseInt(Math.random() * 30)]);
+    
+ 	   data[1] = [];
+ 	  	for (var i = 0; i <= 6; i += 1)
+ 		   	data[1].push([i, parseInt(Math.random() * 30)]);
+
+    var type = [];
+    
+    type[0] = ["A","40,0,0",[false, false, true, false]];
+    type[1] = ["B","30,30,30",[true,false, false, false]];  
+    chart_update("#chart1", data, 0, type);	//render
+    
+    
+    //chart2
+    
+    var data = [];
+	
+    data[0] = [];
+    for (var i = 0; i <= 6; i += 1)
+        data[0].push([i, parseInt(Math.random() * 300)]);
+        
+    type[0] = ["A","0,40,0",[true, true, false, false]];
+    chart1 = chart_update("#chart2", data, 0, type);	//render
+    
+    
+    //chart3
+    
+	var data = [];
+	data[0] = 4;
+	data[1] = 6;
+
+	
+	var type = [];
+	type[0] = ["A","0,255,0"]; 
+	type[1] = ["B","0,0,255"];
+
+    chart_update("#chart3", data, 2, type);	//render
+
+    
+    //chart4
+    
+    //data
+	var data = [];
+	
+    data[0] = [];
+    for (var i = 0; i <= 6; i += 1)
+        data[0].push([i, parseInt(Math.random() * 30)]);
+    
+    data[1] = [];
+   	for (var i = 0; i <= 6; i += 1)
+    	data[1].push([i, parseInt(Math.random() * 30)]);
+
+    var type = [];
+    
+    type[0] = ["A","255,0,0",[true, false, false, false]];
+    type[1] = ["B","30,30,30",[true,false, false, false]];  
+    chart_update("#chart4", data, 0, type);	//render
+    
+    
+    	
+	}
+	
+	function monitor()
+	{
+        for (var i = 1; i < 250; i++)
+    		gdata[0][i-1][1]=gdata[0][i][1];
+        			
+        gdata[0][249]=[24.9, Math.cos(s)];
+        s+=0.1;
+        	
+        var type = [];
+    	type[0] = ["Monitor","30,30,30",[false,true,false,false]];   		
+        chart_update("#chart9", gdata, 0,  type);	//render
+        
+        	
+       setTimeout(monitor, 25);
+	}
+	
+	</script>
+
+	
+     
+	<!-- Modal -->
+	<div id="calModal" class="modal hide shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="calModalLabel">Remove?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button id="calModal_ok" class="btn btn-inverse" data-dismiss="modal">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade shutdown" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Logout?</h3>
+  	</div>
+  	<div class="modal-body">
+    <p>Are you sure...</p>
+  	</div>
+  	<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-inverse">Yes</button>
+  	</div>
+	</div>
+
+	<!-- Main -->
+	
+	
+	<div id="leftside" class="hidden-phone hidden-tablet">
+		
+		<div style="background-image:url('application/design/mbg.png')">
+		<div id="leftside-logo">
+		
+			<img src="application/data/logo.png" alt="Logo">
+			
+		</div>
+		<div>
+		
+			
+
+	<!-- left menu -->
+	<ul class="nav leftmenu">
+  		<li id="lm1" class="leftmenu-opt"><a href="index.html">Dashboard<span id="badge_lm1" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm2" class="leftmenu-opt"><a href="orders.html">Orders<span id="badge_lm2" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm3" class="leftmenu-opt"><a href="users.html">Users<span id="badge_lm3" class="leftmenu-badge hide"></span></a></li>
+  		<li id="lm4" class="leftmenu-opt"><a href="products.html">Products<span id="badge_lm4" class="leftmenu-badge hide"></span></a>
+  		
+  		<div id="submenu_products" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm4-1"><a href="ptypes.html">Product Types <span id="badge_lm4_1" class="leftmenu-sub-badge hide"></span></a></li>
+   		</ul>
+   		</div>
+  		
+  		</li>
+  		<li id="lm5" class="leftmenu-opt"><a href="content.html">//Content<span id="badge_lm5" class="leftmenu-badge hide"></span></a>
+  		 
+  		<div id="submenu_content" class="collapse in">
+  		<ul class="nav leftmenu-sub">
+      			<li id="lm5-4"><a href="charts.html">Charts</a></li>
+  				<li id="lm5-2"><a href="tables.html">Tables</a></li>
+  				<li id="lm5-3"><a href="forms.html">Forms</a></li>		
+  				<li id="lm5-1"><a href="typography.html">Typography</a></li>
+  				<li id="lm5-5"><a href="interface.html">Ux</a></li>
+  				<li id="lm5-6"><a href="boxes.html">Boxes</a></li>
+  				<li id="lm5-7"><a href="grid.html">Grid</a></li>
+   		</ul>
+   		</div>
+   		
+   		</li>
+  		<li id="lm6" class="leftmenu-opt"><a href="login.html">Login<span id="badge_lm6" class="leftmenu-badge hide"></span></a></li>
+	</ul>
+	<!-- end: left menu -->
+
+
+     
+		</div>
+		</div>
+	
+	</div>
+	
+	<div id="wrap">
+	<div id="rightside">
+	
+		<div id="rightside-space">
+		
+		<div id="rightside-menu" class="top-rheight">
+		
+			<!-- menu <980 -->
+     		<div id="rightside-menu-left" class="visible-phone visible-tablet top-lplace">
+     	
+     		
+		<!-- left menu min -->
+		<div id="dropdown_leftmenu2" class="dropdown">
+  			
+  			<a id="leftmenu2" class="dropdown-toggle" data-toggle="dropdown" href="index.html#">
+  			<img class="hide-480" src="application/data/logo.png" alt="Logo"><span class="icon-align-justify icon-white tra-0"></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu topmenu-left">  			
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-tasks icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="index.html">Dashboard</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="orders.html">Orders</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="users.html">Users</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="products.html">Products</a></div>
+  				</li>	
+  				
+  				<li class="submenumin_products">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="ptypes.html">Product Types</a></div>
+  				</li>
+  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-align-justify icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="content.html">//Content</a></div>
+				</li>
+				
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="charts.html">Charts</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="tables.html">Tables</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="forms.html">Forms</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="typography.html">Typography</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="interface.html">Ux</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="boxes.html">Boxes</a></div>
+  				</li>
+  				<li class="submenumin_content">
+  					<div class="topmenu-opt-info"></div>
+  					<div class="topmenu-opt"><a href="grid.html">Grid</a></div>
+  				</li>
+		  				
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-lock icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="login.html">Login</a></div>
+  				</li>
+  			</ul>
+  			</div>
+  			
+		</div>
+		<!-- end: left menu min -->
+
+     	
+     		</div>
+     		<!-- end - menu <980 -->
+		
+			<div id="rightside-menu-right">
+			
+						
+			<div class="top-btn top-bwidth">
+				
+			<!-- toolbox -->
+			<div id="dropdown_toolbox" class="dropdown">
+  			
+  			<a id="toolbox" class="dropdown-toggle" data-toggle="dropdown" href="index.html#">
+  			<span class="white"><i class="icon-wrench icon-white tra"></i></span>
+  			</a>
+  			
+  			<div class="dropdown-menu topmenu-menu">
+  			<ul class="nav topmenu">			
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-hdd icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="filemanager.html">File Manager</a></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-cog icon-white tra"></i></div>
+  					<div class="topmenu-opt"><span class="disabled">Settings</span></div>
+  				</li>
+  				<li>
+  					<div class="topmenu-opt-info"><i class="icon-question-sign icon-white tra"></i></div>
+  					<div class="topmenu-opt"><a href="info.html">Info</a></div>
+  				</li>	
+  			</ul> 				
+  			</div>
+  			
+			</div>
+			<!-- end: toolbox -->
+
+			</div>	
+			<div class="top-btn top-bwidth">
+				
+			<a href="index.html#myModal" role="button" class="white" data-toggle="modal"><i class="icon-off icon-white tra-0"></i></a>
+
+			</div>	
+			<div class="top-btn top-bwidth-not">
+				
+			<!-- notifications -->
+			<div id="dropdown_notification" class="dropdown">
+  			
+  			<a id="notification" class="dropdown-toggle" data-toggle="dropdown" href="index.html#">
+  			<span class="white topmenu-mainopt visible-616">Notifications <span id="badge_notif" class="topmenu-badge hide"></span></span><span class="white topmenu-mainopt hide-616"><span id="badge_notif2" class="topmenu-badge hide"></span></span>
+  			</a>
+
+  			<div class="dropdown-menu topmenu-menu notif-menu">  			
+  			<ul id="notification_content_last" class="nav topmenu" style="display:none">
+  			</ul>
+  			<ul id="notification_content" class="nav topmenu">
+  			</ul>  			
+  			</div>
+  			
+			</div>
+			<!-- end: notifications -->
+
+			</div>	
+			<div class="top-btn-sea">
+				
+			<!-- search -->
+			<form class="form-search form-nomargin">
+				
+				<div class="input-append">
+				<input class="search-query minih" style="width:50px" type="text">
+				<button type="submit" class="btn btn-mini">Search</button>
+				</div>
+				
+			</form>
+			<!-- end: search -->
+
+			</div>
+
+
+			</div>
+			
+		</div>
+		
+		
+		<div id="rightside-content">
+			
+			<!-- page header -->
+	 		
+	<div class="pagestatus">   	
+     	<div class="pagestatus-right">
+			<!-- right -->
+			
+			<div class="btn-group btn-group-status">	
+				<span class="btn btn-small disabled"><i class="icon-inbox"></i></span>
+			</div>
+			<div class="btn-group btn-group-status">			
+				<a href="products.html" class="btn btn-small"><i class="icon-gift"></i></a>
+				<a href="users.html" class="btn btn-small"><i class="icon-user"></i></a>
+				<a href="orders.html" class="btn btn-small"><i class="icon-shopping-cart"></i></a>
+			</div><span id="badge_status" class="status-badge hide"></span>
+			
+			<!-- end: right -->
+		</div>
+		
+     	<ul class="breadcrumb">
+			<li>
+				<a href="index.html#">Home</a> /
+			</li>
+		</ul><br>
+		Dashboard</div>
+
+     		<!-- end: page header --> 		
+		
+     		<div class="container-fluid">
+	 		<!-- main content -->
+	 		
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span8">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r">					
+		<div id="box_0_content" class="box-r-content">
+     		
+     		<div class="ibox-hero god" style="background-image:url('application/data/dashboard.jpg');">
+				
+				<div class="container-fluid margin-top container-box">
+				<div class="row-fluid">
+					<div class="span4 margin-0">
+						<div class="topanim">
+						<div id="chart-top1" style="height:145px"></div>
+						<span id="chart1_vframe" class="topanim-desc" style="visibility:hidden">Orders <span id="chart1_value" class="text-large text-success">0</span></span>
+						</div>
+					</div>
+					
+					<div class="span4 margin-0">
+						<div class="topanim">
+						<div id="chart-top2" style="height:145px"></div>
+						<span id="chart2_vframe" class="topanim-desc" style="visibility:hidden">New users <span id="chart2_value" class="text-large text-error">0</span></span>
+						</div>
+					</div>
+					
+					<div class="span4 margin-0">
+						<div class="topanim">
+						<div id="chart-top3" style="height:145px"></div>
+						<span id="chart3_vframe" class="topanim-desc" style="visibility:hidden">Sold <span id="chart3_value" class="text-large">0</span></span>
+						</div>
+					</div>
+				</div>
+				</div>
+				
+			</div>
+			
+			<div class="container-fluid margin-top container-box">
+			<div class="row-fluid">
+			<div class="span12">
+					
+			<table class="table table-striped table-bordered table-hover margin-bottom0">
+
+ 			<tbody>
+			<tr><td>Orders</td><td>3</td><td rowspan="3"><a class="btn btn-mini pull-right" href="content.html"><i class="icon-certificate icon-btn-mini"></i> Not only cakes!</a></td></tr>
+			<tr><td>New users</td><td>3</td></tr>
+			<tr><td>Own products</td><td>100%</td></tr>
+			</tbody>
+			</table>
+			
+			</div>
+			</div>	
+			</div>
+			
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+     	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-signal tra"></i></span><span class="box-r-top-title">
+				Last week
+			</span>
+			<div class="box-r-top-right">
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Full Raport</button>
+				</div>
+			</div>
+		</div>					
+		<div id="box_0a_content" class="box-r-content">
+     		<div class="chart-area"><div id="chart1" style="height:145px"></div></div>
+     		
+     	<table class="table table-hover">
+  				<tbody>
+				<tr><td style="width:50px">A</td><td>Orders</td></tr>
+				<tr><td>B</td><td>New users</td></tr>
+		
+				</tbody>
+		</table>
+				
+		<div class="container-fluid container-box margin-top">
+     	<div class="row-fluid">
+     	
+     	<div class="span6">	
+			<div class="chart-area"><div id="chart3" style="height:145px"></div></div>
+			<table class="table table-hover table-condensed margin-0">
+  				<tbody>
+				<tr><td>A</td><td>Service fee</td></tr>
+				<tr><td>B</td><td>Normal</td></tr>
+				</tbody>
+			</table>
+		</div>
+     	<div class="span6">	
+			<div class="chart-area"><div id="chart2" style="height:145px"></div></div>
+			<table class="table table-hover table-condensed margin-0">
+  				<tbody>
+				<tr><td>A</td><td>Revenue $</td></tr>
+				</tbody>
+			</table>
+		</div>    	
+		
+		</div>
+		</div>	
+
+		</div>		
+		<div class="box-r-status">
+			Last update: 2012-09-01
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+	 </div>
+	 <div class="span4">
+	 	
+	 	<div class="btn-group btn-sg margin-bottom">	 
+  		<a href="http://facebook.com/mycompany" target="_blank" class="btn btn-s r3">Facebook</a>
+  		<a href="http://twitter/mycompany" target="_blank" class="btn btn-s r3">Twitter</a>
+  		<a href="http://plus.google.com/mycompany" target="_blank" class="btn btn-s r3">G+</a>  
+	 	</div>
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-comment tra"></i></span><span class="box-r-top-title">
+				Social
+			</span>
+			<div class="box-r-top-right">
+				<a href="index.html#self" data-toggle="collapse" data-target="#box_2_content"><span id="badge_social" class="box-badge hide"></span> <i id="box_2_expand" class="icon-plus-sign tra"></i></a>
+			</div>
+		</div>					
+		<div id="box_2_content" class="box-r-content collapse">
+		
+     		<div class="container-fluid container-box margin-top">
+     		<div class="row-fluid">
+     		<div class="span12">
+				
+				<div class="media">
+  				<a class="pull-left" href="index.html#">
+    				<img class="media-object" src="application/data/users/c-bb2.jpg" alt="user" width="64">
+  				</a>
+  				<div class="media-body">
+    				<h4 class="media-heading">F 2009-09-09 23:08</h4>
+    				Delicous!
+  				</div>
+				</div>				
+				
+			</div>
+			</div>			
+			</div>
+			
+			<table class="table table-striped table-condensed table-hover margin-bottom0">
+
+ 			<tbody>
+		<tr><td style="width:100px">Likes</td><td>230</td></tr>
+		<tr><td>Followers</td><td>763</td></tr>
+		<tr><td>Google +1</td><td>234</td></tr>
+		
+		</tbody>
+			</table>
+				
+				<form class="form-nomargin">
+	 			<div class="form-box">
+	 			
+  					<div class="control-group">
+    					<label class="control-label" for="message">Message</label>
+    					<div class="controls">
+    					<textarea id="message" rows="3" class="span12" placeholder=""></textarea>
+    					</div>
+  					</div>
+
+	 			</div>
+	 			<div class="ibox-bottom margin-0 padding-10">
+	 			
+	 				<div class="control-group">
+    						<button type="submit" class="btn btn-small disabled">Publish</button>
+  					</div>
+  
+	 			</div>
+	 			
+	 		</form>
+			
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+     	<!-- box-r -->
+	 	<div class="box-r"> 		
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-picture tra"></i></span><span class="box-r-top-title">
+				Kids
+			</span>
+			<div class="box-r-top-right">
+				<a href="index.html#self" data-toggle="collapse" data-target="#box_1_content"><i id="box_1_expand" class="icon-minus-sign tra"></i></a>
+			</div>
+		</div>					
+		<div id="box_1_content" class="box-r-content collapse in">
+     		<img style="width:100%" src="application/data/dzieci.jpg" alt="Family">
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 <div class="page-header"><a href="index.html#self" id="section_2">Tek <i id="section_2_expand" class="icon-minus-sign tra"></i></a></div>
+	 
+	 <div id="section_2_content">
+	  
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	
+	 	<!-- box-r -->
+	 	<div class="box-r"> 		
+	 	<div class="alert alert-info">
+  		<button type="button" class="close" data-dismiss="alert">×</button>
+  		Heads up! This alert needs your attention, but it's not super important.
+		</div>
+		<div class="box-r-top">			
+			<span class="box-r-top-icon"><i class="icon-signal tra"></i></span><span class="box-r-top-title">
+				Website Stats
+			</span>
+			<div class="box-r-top-right">
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Seo</button>
+					<button class="btn btn-mini" type="button">Google Analytics</button>
+				</div>
+				<div class="btn-group btn-group-top">
+					<button class="btn btn-mini" type="button">Full Raport</button>
+				</div>			
+			</div>
+		</div>					
+		<div id="box_0b_content" class="box-r-content">
+		
+			<div class="container-fluid container-box margin-top">
+			<div class="row-fluid">
+			<div class="span8">
+			
+     		<div class="chart-area"><div id="chart4" style="height:78px"></div></div>
+     		  		
+     		<table class="table table-hover margin-0 table-condensed">
+  				<tbody>
+				<tr><td style="width:20px">A</td><td>Visits</td><td>49</td></tr>
+				<tr><td>B</td><td>Unique Visitors</td><td>33</td></tr>			
+				</tbody>
+			</table>
+			
+			</div>
+			<div class="span4">
+     		  		
+     		<table class="table table-hover margin-0 table-condensed">
+  				<tbody>
+				<tr><td>Pageviews</td><td style="width:20px">3.5</td></tr>
+				<tr><td>Bounce rate</td><td>23%</td></tr>
+				<tr><td>New visits</td><td>78%</td></tr>
+				<tr><td>Avg. visit duration</td><td>1:23</td></tr>
+				<tr><td>Pages / visit</td><td>3.5</td></tr>
+				</tbody>
+			</table>
+			
+			</div>
+			</div>
+			</div>
+		
+		</div>		
+		<div class="box-r-status">
+			Last update: 2012-09-01
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+     	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+	 
+	 </div>
+	 
+	 
+	 <div class="page-header"><a id="section_1" href="index.html#self">Calendar <span id="badge_cal" class="box-badge hide"></span> <i id="section_1_expand" class="icon-plus-sign tra"></i></a></div>
+     
+     <div class="alert alert-header">
+  			<button type="button" class="close" data-dismiss="alert">×</button>
+  		Best check yo self, you're not looking too good.
+	 </div>
+	 
+	 <div id="section_1_content" class="hide">
+	 
+	 <!-- row -->
+	 <div class="row-fluid">
+	 
+	 <div class="span12">
+	 	<!-- box-r -->
+	 	<div class="box-r">					
+		<div id="box_0c_content" class="box-r-content">
+     		<div class="container-fluid container-box margin-top">
+			<div class="row-fluid">
+			<div class="span12">			
+				<div id='calendar'></div>					
+			</div>
+			</div>
+			</div>
+		</div>		
+     	</div>
+     	<!-- end: box-r -->	
+	 </div>
+	 
+	 </div>
+	 <!-- row end -->
+     
+     </div>
+
+     		<!-- end: main content -->
+     		</div>
+     
+     		<div class="container-end"></div>
+		
+		</div>
+		
+		<div id="rightside-foot">
+			
+			
+	<div class="footmenu">
+	 Muffin Admin Cake v1.04 © <a href="http://thomasjohn.eu" target="_blank">Thomas John</a>, 2012 - <a href="mailto:mail@thomasjohn.eu">Mail</a> 
+	 
+	 <div class="pull-right margin-right">
+	 </div>
+
+	 </div>
+
+     
+     		<div class="container-end"></div>
+     		
+		</div>
+		
+		</div>
+		
+	</div>
+	</div>
+			
+  </body>
+</html>
